@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>open_rover_model</name>
+  <version>0.0.0</version>
+  <description>The open_rover_model package</description>
+  <maintainer email="todo@todo.com">TODO</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclpy</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz2</depend>
+  <exec_depend>ros2launch</exec_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

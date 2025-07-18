@@ -11,7 +11,7 @@ def generate_launch_description():
     urdf_file_name = 'robot.urdf'
 
     urdf = os.path.join(
-        get_package_share_directory('my_robot_description'),
+        get_package_share_directory('open_rover_model'),
         'urdf',
         urdf_file_name)
 
@@ -40,5 +40,5 @@ def generate_launch_description():
             executable='rviz2',
             name='rviz2',
             output='screen',
-            arguments=['-d', os.path.join(get_package_share_directory('my_robot_description'), 'config', 'robot.rviz')]),
+            arguments=['-d', os.path.join(get_package_share_directory('open_rover_model'), 'config', 'robot.rviz')]),
     ])
