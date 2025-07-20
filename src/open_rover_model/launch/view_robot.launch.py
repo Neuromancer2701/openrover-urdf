@@ -10,10 +10,13 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     urdf_file_name = 'open_rover.urdf'
 
-    urdf = os.path.join(
+    urdf_path = os.path.join(
         get_package_share_directory('open_rover_model'),
         'urdf',
         urdf_file_name)
+
+    with open(urdf_path, 'r') as infp:
+        urdf_content = infp.read()
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -26,8 +29,8 @@ def generate_launch_description():
             executable='robot_state_publisher',
             name='robot_state_publisher',
             output='screen',
-            parameters=[{'use_sim_time': use_sim_time}],
-            arguments=[urdf]),
+            parameters=[{'use_sim_time': use_sim_time,
+                         'robot_description': urdf_content}]),
 
         Node(
             package='rviz2',
