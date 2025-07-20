@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import os
 from glob import glob
 
@@ -6,8 +6,8 @@ package_name = 'open_rover_model'
 
 setup(
     name=package_name,
-    version='0.0.0',
-    packages=[package_name],
+    version='0.0.1',
+    packages=find_packages(),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -18,13 +18,12 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='TODO',
+    maintainer='Seth M King',
     maintainer_email='todo@todo.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-        ],
+        'console_scripts': [],
     },
 )

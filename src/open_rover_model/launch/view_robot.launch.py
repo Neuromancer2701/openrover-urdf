@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    urdf_file_name = 'robot.urdf'
+    urdf_file_name = 'open_rover.urdf'
 
     urdf = os.path.join(
         get_package_share_directory('open_rover_model'),
@@ -30,15 +30,8 @@ def generate_launch_description():
             arguments=[urdf]),
 
         Node(
-            package='joint_state_publisher_gui',
-            executable='joint_state_publisher_gui',
-            name='joint_state_publisher_gui',
-            output='screen'),
-
-        Node(
             package='rviz2',
             executable='rviz2',
             name='rviz2',
-            output='screen',
-            arguments=['-d', os.path.join(get_package_share_directory('open_rover_model'), 'config', 'robot.rviz')]),
+            output='screen'),
     ])

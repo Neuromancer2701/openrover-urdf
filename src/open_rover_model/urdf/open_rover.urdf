@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<robot name="open_rover">
+  <!-- Dummy Root Link (No Inertia for KDL Compatibility) -->
+  <link name="dummy_root">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/> <!-- Minimal visual for debugging -->
+      </geometry>
+      <material name="transparent">
+        <color rgba="0 0 0 0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Main Frame (First Piece: 0.835m x 0.8m with 0.5m legs and 0.1m deep box) -->
+  <link name="main_frame">
+    <inertial>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <mass value="34.1"/> <!-- Hollow tubing (13.12 kg) + sheet metal box (20.98 kg) -->
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.8"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.835 0.8 0.1"/> <!-- Includes frame and sheet metal box -->
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.835 0.8 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Left Rear Leg (on Main Frame) -->
+  <link name="left_rear_leg">
+    <inertial>
+      <origin xyz="-0.02 0 -0.15" rpy="0 0 0"/>
+      <mass value="2.0"/> <!-- 0.5m of hollow 40mm square tubing -->
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.005"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.02 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.5"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.02 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right Rear Leg (on Main Frame) -->
+  <link name="right_rear_leg">
+    <inertial>
+      <origin xyz="-0.02 0 -0.15" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.005"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.02 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.5"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.02 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.5"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Pivot Frame (Second Piece: 0.8m with 0.5m legs) -->
+  <link name="pivot_frame">
+    <inertial>
+      <origin xyz="0 0 -0.02" rpy="0 0 0"/>
+      <mass value="3.21"/> <!-- 0.8m of hollow tubing -->
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.15"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.02" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.8 0.04 0.04"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.02" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.8 0.04 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Left Front Leg (on Pivot Frame) -->
+  <link name="left_front_leg">
+    <inertial>
+      <origin xyz="-0.02 0 -0.23" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.005"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.02 0 -0.23" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.46"/>
+      </geometry>
+      <material name="left_front_color">
+        <color rgba="0.9 0.2 0.2 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.02 0 -0.23" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.46"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right Front Leg (on Pivot Frame) -->
+  <link name="right_front_leg">
+    <inertial>
+      <origin xyz="0.02 0 -0.23" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.005"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.02 0 -0.23" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.46"/>
+      </geometry>
+      <material name="right_front_color">
+        <color rgba="0.2 0.2 0.9 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02 0 -0.23" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.46"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Wheels -->
+  <link name="left_rear_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.03"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="right_rear_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.03"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="left_front_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.03"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="right_front_wheel">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.03"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.15" length="0.11"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joints -->
+  <!-- Dummy Root to Main Frame -->
+  <joint name="dummy_to_main_frame" type="fixed">
+    <parent link="dummy_root"/>
+    <child link="main_frame"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Main Frame to Legs -->
+  <joint name="main_to_left_rear_leg" type="fixed">
+    <parent link="main_frame"/>
+    <child link="left_rear_leg"/>
+    <origin xyz="0.4175 0.38 0.00" rpy="0 0 0"/> <!-- Back edge, left side -->
+  </joint>
+
+  <joint name="main_to_right_rear_leg" type="fixed">
+    <parent link="main_frame"/>
+    <child link="right_rear_leg"/>
+    <origin xyz="0.4175 -0.38 0.0" rpy="0 0 0"/> <!-- Back edge, right side -->
+  </joint>
+
+  <!-- Pivot Frame to Main Frame (Suspension) -->
+  <joint name="main_to_pivot_frame" type="revolute">
+    <parent link="main_frame"/>
+    <child link="pivot_frame"/>
+    <origin xyz="-0.44 0 0.1" rpy="0 0 1.5708"/> <!-- Front of main frame -->
+    <axis xyz="0 1 0"/> <!-- Pivot around y-axis -->
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="1.0"/>
+  </joint>
+
+  <!-- Pivot Frame to Legs -->
+  <joint name="pivot_to_left_front_leg" type="fixed">
+    <parent link="pivot_frame"/>
+    <child link="left_front_leg"/>
+    <origin xyz="0.4 0 -0.04" rpy="0 0 0"/> <!-- Left end of pivot frame -->
+  </joint>
+
+  <joint name="pivot_to_right_front_leg" type="fixed">
+    <parent link="pivot_frame"/>
+    <child link="right_front_leg"/>
+    <origin xyz="-0.4 0 -0.04" rpy="0 0 0"/> <!-- Right end of pivot frame -->
+  </joint>
+
+  <!-- Legs to Wheels -->
+  <joint name="left_rear_leg_to_wheel" type="continuous">
+    <parent link="left_rear_leg"/>
+    <child link="left_rear_wheel"/>
+    <origin xyz="-0.02 0.075 -0.4" rpy="0 0 0"/> <!-- 0.035m from bottom, 0.055m spindle + 0.015m gap -->
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="right_rear_leg_to_wheel" type="continuous">
+    <parent link="right_rear_leg"/>
+    <child link="right_rear_wheel"/>
+    <origin xyz="-0.02 -0.075 -0.4" rpy="0 0 0"/> <!-- 0.035m from bottom, 0.055m spindle + 0.015m gap -->
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="left_front_leg_to_wheel" type="continuous">
+    <parent link="left_front_leg"/>
+    <child link="left_front_wheel"/>
+    <origin xyz="0.055 0 -0.465" rpy="0 0 1.5708"/> <!-- 0.035m from bottom, 0.055m spindle + 0.015m gap -->
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="right_front_leg_to_wheel" type="continuous">
+    <parent link="right_front_leg"/>
+    <child link="right_front_wheel"/>
+    <origin xyz="-0.055 0 -0.465" rpy="0 0 1.5708"/> <!-- 0.035m from bottom, 0.055m spindle + 0.015m gap -->
+    <axis xyz="0 1 0"/>
+  </joint>
+
+</robot>
