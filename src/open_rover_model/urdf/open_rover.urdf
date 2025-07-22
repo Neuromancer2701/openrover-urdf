@@ -19,6 +19,19 @@
     </collision>
   </link>
 
+  <!-- Macros -->
+  <macro name="box_inertia" params="m x y z">
+    <inertia ixx="${m*(y*y+z*z)/12}" ixy="0" ixz="0" iyy="${m*(x*x+z*z)/12}" iyz="0" izz="${m*(x*x+y*y)/12}" />
+  </macro>
+
+  <macro name="cylinder_inertia" params="m r h">
+    <inertia ixx="${m*(3*r*r+h*h)/12}" ixy="0" ixz="0" iyy="${m*(3*r*r+h*h)/12}" iyz="0" izz="${m*r*r/2}" />
+  </macro>
+
+  <macro name="sphere_inertia" params="m r">
+    <inertia ixx="${2*m*r*r/5}" ixy="0" ixz="0" iyy="${2*m*r*r/5}" iyz="0" izz="${2*m*r*r/5}" />
+  </macro>
+
   <!-- Main Frame -->
   <link name="main_frame_base">
     <visual>
@@ -34,7 +47,7 @@
     </collision>
     <inertial>
       <mass value="1.8"/>
-      <box_inertia m="1.8" x="0.76" y="0.04" z="0.04"/>
+      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.087" iyz="0.0" izz="0.087" />
     </inertial>
   </link>
   <link name="main_frame_end1">
@@ -51,7 +64,7 @@
     </collision>
     <inertial>
       <mass value="1.8"/>
-      <box_inertia m="1.8" x="0.04" y="0.75" z="0.04"/>
+      <inertia ixx="0.085" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.085" />
     </inertial>
   </link>
   <link name="main_frame_end2">
@@ -68,7 +81,7 @@
     </collision>
     <inertial>
       <mass value="1.8"/>
-      <box_inertia m="1.8" x="0.04" y="0.75" z="0.04"/>
+      <inertia ixx="0.085" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.085" />
     </inertial>
   </link>
   <link name="main_frame_side1">
@@ -85,7 +98,7 @@
     </collision>
     <inertial>
       <mass value="1.8"/>
-      <box_inertia m="1.8" x="0.76" y="0.04" z="0.04"/>
+      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.087" iyz="0.0" izz="0.087" />
     </inertial>
   </link>
     <link name="main_frame_leg1">
@@ -102,7 +115,7 @@
     </collision>
     <inertial>
       <mass value="1.2"/>
-      <box_inertia m="1.2" x="0.04" y="0.04" z="0.5"/>
+      <inertia ixx="0.025" ixy="0.0" ixz="0.0" iyy="0.025" iyz="0.0" izz="0.002" />
     </inertial>
   </link>
     <link name="main_frame_leg2">
@@ -119,7 +132,7 @@
     </collision>
     <inertial>
       <mass value="1.2"/>
-      <box_inertia m="1.2" x="0.04" y="0.04" z="0.5"/>
+      <inertia ixx="0.025" ixy="0.0" ixz="0.0" iyy="0.025" iyz="0.0" izz="0.002" />
     </inertial>
   </link>
   <link name="sheet_metal_box">
@@ -136,7 +149,7 @@
     </collision>
     <inertial>
       <mass value="11.3"/>
-      <box_inertia m="11.3" x="0.76" y="0.75" z="0.1"/>
+      <inertia ixx="0.54" ixy="0.0" ixz="0.0" iyy="0.55" iyz="0.0" izz="1.08" />
     </inertial>
   </link>
 
@@ -187,7 +200,7 @@
     </collision>
     <inertial>
       <mass value="1.8"/>
-      <box_inertia m="1.8" x="0.75" y="0.04" z="0.04"/>
+      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.085" iyz="0.0" izz="0.085" />
     </inertial>
   </link>
   <link name="pivot_frame_leg1">
@@ -204,7 +217,7 @@
     </collision>
     <inertial>
       <mass value="1.2"/>
-      <box_inertia m="1.2" x="0.04" y="0.04" z="0.5"/>
+      <inertia ixx="0.025" ixy="0.0" ixz="0.0" iyy="0.025" iyz="0.0" izz="0.002" />
     </inertial>
   </link>
   <link name="pivot_frame_leg2">
@@ -221,7 +234,7 @@
     </collision>
     <inertial>
       <mass value="1.2"/>
-      <box_inertia m="1.2" x="0.04" y="0.04" z="0.5"/>
+      <inertia ixx="0.025" ixy="0.0" ixz="0.0" iyy="0.025" iyz="0.0" izz="0.002" />
     </inertial>
   </link>
 
@@ -255,7 +268,7 @@
       </collision>
       <inertial>
         <mass value="2"/>
-        <cylinder_inertia m="2" r="0.15" h="0.11"/>
+        <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.03" />
       </inertial>
     </link>
     <link name="${prefix}_spindle">
