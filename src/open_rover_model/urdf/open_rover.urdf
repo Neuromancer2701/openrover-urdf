@@ -19,6 +19,32 @@
     </collision>
   </link>
 
+  <!-- Materials -->
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+  <material name="green">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+  <material name="grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="orange">
+    <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+  </material>
+  <material name="brown">
+    <color rgba="0.870588235294 0.811764705882 0.764705882353 1.0"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
   <!-- Macros -->
   <macro name="box_inertia" params="m x y z">
     <inertia ixx="${m*(y*y+z*z)/12}" ixy="0" ixz="0" iyy="${m*(x*x+z*z)/12}" iyz="0" izz="${m*(x*x+y*y)/12}" />
@@ -171,17 +197,17 @@
   <joint name="main_frame_leg1_joint" type="fixed">
     <parent link="main_frame_base"/>
     <child link="main_frame_leg1"/>
-    <origin xyz="0.36 0.73 0.23" rpy="0 0 0"/>
+    <origin xyz="0.36 0.73 -0.23" rpy="0 0 0"/>
   </joint>
   <joint name="main_frame_leg2_joint" type="fixed">
     <parent link="main_frame_base"/>
     <child link="main_frame_leg2"/>
-    <origin xyz="-0.36 0.73 0.23" rpy="0 0 0"/>
+    <origin xyz="-0.36 0.73 -0.23" rpy="0 0 0"/>
   </joint>
   <joint name="sheet_metal_box_joint" type="fixed">
     <parent link="main_frame_base"/>
     <child link="sheet_metal_box"/>
-    <origin xyz="0 0.375 -0.05" rpy="0 0 0"/>
+    <origin xyz="0 0.355 -0.05" rpy="0 0 0"/>
   </joint>
 
 
