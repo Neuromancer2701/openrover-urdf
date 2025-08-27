@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
-<robot name="my_robot">
+<robot name="open_rover" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Constants -->
   <property name="M_PI" value="3.1415926535897931" />
   <property name="M_PI_2" value="1.5707963267948966" />
   <property name="M_PI_4" value="0.7853981633974483" />
 
-<?xml version="1.0"?>
-<robot name="open_rover" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- Dummy Root Link -->
   <link name="dummy_root">
     <visual>
